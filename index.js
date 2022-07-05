@@ -2,7 +2,9 @@
 console.log("hola mundo");
 
 
-//Arrays
+//ARRAYS
+console.log("*********ARREGLOS-ARRAYS**********")
+
 let miArreglo = [10, 20, 30];
 // indicie array  0 |1  | 2
 console.log(miArreglo);
@@ -55,3 +57,35 @@ console.log(estaciones)// ["Otoño", "Primavera", "Verano"]
 estaciones = ["Invierno", "Otoño", "Primavera"];
 estaciones.unshift("Verano");
 console.log(estaciones)// ["Verano","Invierno","Otoño", "Primavera", ]
+
+
+//ACTIVIDAD LISTA DE COMPRAS
+
+let miListaDeCompras = [["Mando", 2],["X-Box", 3],["Cargador", 5]];
+console.log("Voy a comprar " + miListaDeCompras[1][1] + " unidades de " + miListaDeCompras[1][0] + ".");
+console.log("Voy a comprar " + miListaDeCompras[2][1] + " unidades de " + miListaDeCompras[2][0] + ".");
+
+
+
+//FUNCIONES
+console.log("*********FUNCIONES**********")
+
+function mostrarMensaje() {
+    /* for(i = 0;i<10;i++){
+        console.log("hola mi nombre es alfredo desde una funcion");
+    } */
+}
+mostrarMensaje();
+
+//Argumentos son los valores que asignamos a los parametros de la funcion
+
+function sumar(a, b){
+    //    parametros a, b
+    let suma = a + b;
+    console.log("El resultado de " + a + " + " + b + " es: " + suma)
+    //return a + b;
+}
+sumar(5,6);// 11
+//   argumento 5,6
+sumar(20,30);//50
+
