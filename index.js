@@ -201,3 +201,149 @@ console.log("  ")
 console.log(9 != 6);//true
 console.log(9 != 9);//false
 console.log("hola" != "hola");// false
+console.log([1,2] != [1,2]);// true, son distintos
+console.log("  ")
+
+//Desigualdad estricta, !==
+
+console.log(1 != "1");//false
+console.log(1 !== "1");//true, desigualdad estricta
+console.log("  ")
+
+//Operador mayor que, >
+console.log(6 > 5); //true
+console.log(3 > 5); //false
+console.log("ACB" > "ABC");//true, en los string, se va comparando letra por letra, en este caso C[1] está ubicado despues de B[1].
+console.log("ABC" > "ABC");//false, son iguales
+console.log("AB" > "A");//true, porque la primera cadena tiene más letras, es mayor que "A"
+console.log("M" > "H");//true, porque M esta después de "H"
+console.log("  ")
+
+
+//Operador mayor o igual qué, >= devuelve un booleano
+
+console.log(5 > 5);//false, en este caso no incluye el valor de la derecha, solo lo toma si es 6
+console.log(5 >= 5)//true, en este caso incluye el 5 del lado derecho, la condicion es "es mayor o igual a 5" y se cumple una
+console.log("  ")
+
+//Operador menor que, < devuelve un booleano
+
+console.log(5 < 6);//true
+console.log(10 < 3);//false
+console.log("A" < "B");//true
+console.log("ABC" < "ACB");//true, B va antes de C por lo tanto es menor
+console.log("  ")
+
+//Operador mayor o igual qué, >= devuelve un booleano
+
+console.log(5 < 5);//false, en este caso no incluye el valor de la derecha, solo lo toma si es 6
+console.log(5 <= 5)//true, en este caso incluye el 5 del lado derecho, la condicion es "es menor o igual a 5" y se cumple una
+console.log("  ");
+
+//Operador logico and, &&. La expresion solo es verdadera cuando ambos operandos son verdaderos.
+
+console.log(true && true);//true
+console.log(true && false);//false
+console.log(false && true);//false
+console.log(false && false);//false
+console.log((2 == 2) && (3 == 3));//true, ambas igualdades devuelven un true
+console.log((2 == 6) && (3 == 3));//false, la primera igualdad devuelve un false, false && true = false
+console.log("  ");
+
+//Operador Logico OR, ||. La expresion es verdadera si alguno de los dos operando o ambos son verdaderos.
+
+console.log(true || true);//true
+console.log(true || false);//true
+console.log(false || true);//true
+console.log(false || false);//false
+console.log((2 == 2) || (3 == 3));//true, ambas igualdades devuelven un true
+console.log((2 == 6) || (3 == 3));//true, la segunda comparacion es true, false || true = true
+console.log("  ");
+
+
+//Operador Logico NOT, !, va antes y junto a la expresion que se quiere negar. convierte un true a un false y viceversa
+
+console.log(!true);//false
+console.log(!false);//true
+
+let a = 8;
+console.log(!(a > 5));//false, se comienza por el parentesis, luego pasa a evaluar el !not. Primero es true y luego pasa a ser false
+console.log(!(a > 9));//true, se comienza por el parentesis, luego pasa a evaluar el !not. Primero es false y luego pasa a ser true
+console.log("  ");
+
+// SENTENCIAS CONDICIONALES
+
+//If
+
+let x = 5;
+if(x > 2 || x > 10){//condicion true
+    console.log("la condicion es verdadera")//se ejecuta codigo
+}
+console.log("  ");
+
+//Clausula else, siempre estará después de una clausula if
+x = 1;
+if(x > 2 || x > 10){//condicion falsa
+    console.log("la condicion es verdadera")
+} else {
+    console.log("la condicion es falsa");//se ejecuta codigo
+}
+console.log("  ");
+
+
+//Clausula else if, sino
+
+function clasificacionValor(valor){
+    if(valor % 2 == 0){
+        console.log("Divisible entre 2.");
+    } else if(valor % 3 == 0){
+        console.log("divisible entre 3.");
+    } else{
+        console.log("No es divisible entre las opciones.");
+    }
+}
+
+clasificacionValor(3);
+clasificacionValor(2);
+clasificacionValor(11);
+console.log("  ");
+
+
+//Condicionales orden logico
+
+function clasificarValor(valor){
+    if(valor < 5){
+        console.log("Menor que 5");
+    } else if(valor < 10){
+        console.log("menor que 10.")
+    } else{
+        console.log("Mayor o igual a 10.")
+    }
+}
+
+clasificarValor(2);//las dos primeras condiciones son true, pero por orden solo muestra el codigo de la primera condicion
+clasificarValor(5);
+console.log("  ");
+
+//Encadenar Sentencias "if..else"
+
+function interpretarIMC(imc){
+    if(imc < 18.5){
+        console.log("Bajo peso")
+    } else if (imc <= 24.9){
+        console.log("Normal")
+    } else if (imc <= 29.9){
+        console.log("Sobrepeso")
+    } else {//si no se cumplen ninguna de las condiciones anteriores
+        console.log("Obeso")
+    }
+
+}
+
+interpretarIMC(15);
+interpretarIMC(24.9);
+interpretarIMC(29.9);
+interpretarIMC(30);
+console.log("  ");
+
+//Ejercicio Golf
