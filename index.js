@@ -347,3 +347,153 @@ interpretarIMC(30);
 console.log("  ");
 
 //Ejercicio Golf
+
+function puntajeDeGolf(par, golpes){
+    if(golpes == 1){
+        return "Hole-in-one!";
+    } else if(golpes <= par - 2){
+        return "Eagle";
+    } else if(golpes == par - 1){
+        return "Birdie";
+    } else if(golpes == par){
+        return "Par";
+    } else if(golpes == par + 1 ){
+        return "Bogey";
+    } else if(golpes == par + 2){
+        return "Double Bogey";
+    } else if(golpes >= par + 3){
+        return "Go Home!";
+    }
+}
+
+console.log(puntajeDeGolf(10,2));
+console.log("  ");
+
+//Sentencias SWITCH, de acuerdo al valor de la condicion se ejecutara el codigo dentro del switch, se utiliza para casos especificos
+
+function clasValor(valor){
+    let respuesta;
+    switch(valor){
+        case 1:
+            respuesta = "Alpha";
+            break;//hasta aquí llega el codigo, se ignora lo demas
+        case 2:
+            respuesta = "beta"; 
+            break;//se sale
+        case 3:
+            respuesta = "gamma";
+            break;//se sale
+        case 4:
+            respuesta = "delta";
+            break;//sale
+    }
+    return respuesta;// esta variable local tendra el valor que le designe la sentencia switch: alpha || beta || gamma || delta
+}
+
+console.log(clasValor(2));//beta
+console.log("  ");
+
+//Sentencia SWITCH, default
+
+function seleccionarIdioma( valor ){
+    let idioma;
+    switch(valor){
+        case 1:
+            idioma = "español";
+            break;
+        case 2:
+            idioma = "frances";
+            break;
+        case 3:
+            idioma = "italiano";
+            break;
+        default:
+            idioma = "ingles";
+            break;
+    }
+    return idioma;
+}
+console.log(seleccionarIdioma(10));
+console.log("  ");
+
+//Sentencia SWITCH multiples casos
+
+function clasificarVolumen(valor){
+    let volumen;
+    switch (valor){
+        case 1:
+            volumen = "bajo";
+            break;
+        case 2://se puede anidar dos case para un mismo resultada
+        case 3://se puede anidar dos case para el mismo resultado
+            volumen = "intermedio";
+            break;
+        case 4://hasta 3 
+        case 5:
+        case 6:
+            volumen = "alto";//case 4,5,6
+            break;
+    }
+    return volumen;
+}
+
+console.log(clasificarVolumen(2));//"intermedio"
+console.log("  ");
+
+//Retornar valores Booleanos, acortando codigo 
+
+function esMenorQue( a, b ){
+    return a < b;
+}
+console.log(esMenorQue(5, 5));//devuelve true o false, sin necesidad de usar if else.
+console.log("  ");
+
+// Patron de retorno anticipado, es util cuando se desea detener la funcion por una condicion especifica
+
+function miFuncion4(){
+    console.log("Hola");
+    return "Mundo";
+    console.log("Adios");//esta linea no se ejecuta
+}
+console.log(miFuncion4())
+
+function calcularRaiz(num){
+    if(num < 0){//Esta condicion se utiliza para validar la entrada antes de ejecutar el código, a utilizar
+        return undefined;
+    }
+    return Math.sqrt(num);
+}
+
+console.log(calcularRaiz(25));
+
+// Ejercicio Black Jack
+
+let conteo = 0;
+
+function contarCartas(carta){
+    let decision;
+    switch(carta){
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+            conteo++;
+            break;
+        case 10:
+        case "J":
+        case "Q":
+        case "K":
+        case "A":
+            conteo--;
+            break;
+    }
+    if(conteo > 0){
+        decision = "Apostar";
+    } else{
+        decision = "Esperar";
+    }
+    return conteo + " " + decision;   
+}
+
+console.log(contarCartas(2));
