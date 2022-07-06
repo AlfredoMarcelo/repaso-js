@@ -497,3 +497,496 @@ function contarCartas(carta){
 }
 
 console.log(contarCartas(2));
+console.log("  ");
+
+// Crear OBJETOS, permiten un conjunto de propiedades que estan relacionado con sus correspondientes valores
+
+let miPerro = {//nombre de la variable que contiene el objeto
+    "nombre": "Renata",//atributos, se deben separar por una coma
+    "edad": 1,
+    "peso": 30,
+    "raza": "Beagle",
+    5: "cinco"//también puede tener una propiedad int, pero esta será convertidad en cadena de texto "5" por javascript
+};
+console.log(" ")
+
+
+//Acceder a propiedades por notacion de puntos
+
+ miPerro = {//nombre de la variable que contiene el objeto
+    "nombre": "Renata",//atributos, se deben separar por una coma
+    "edad": 1,
+    "peso": 30,
+    "raza": "Beagle",
+    5: "cinco"//también puede tener una propiedad int, pero esta será convertidad en cadena de texto "5" por javascript
+};
+
+console.log(miPerro.nombre);//Renata, No se puede utilizar variables para guardar y luego acceder con esta notacion a una propieda
+console.log("  ");
+
+//Acceder a propiedades: Notacion de Corchetes
+
+let miCuaderno = {
+    "color"             : "verde",
+    "categoria"         : 3,
+    "numero de paginas" : 200 //este atributo no se podría usar con la notacion de puntos, debe ser camelCase numeroDeOPaginas.
+};
+
+console.log(miCuaderno["numero de paginas"]);// 200, usar corchetes y agregar el atributo, no muy usado la notacion corchetes para obj
+console.log("  ")
+
+
+//Acceder a propiedades: con Variables
+
+let resultados = {
+    1 : "nora256",
+    2 : "gino44",
+    3 : "estef55",
+    4 : "kiara44"
+};
+
+let posicion = 4;// se guarda el atributo en la variable posicion
+console.log(resultados[posicion]);// kiara44, ayuda a ser más dinamico el programa, solo funciona con la notacion corchetes.
+console.log("  ");
+
+
+//Actualizar propiedad de un objeto
+
+let mochila = {
+    "color"     : "azul",
+    "tamaño"    : "mediano",
+    "contenido" : ["botella de agua", "cuaderno"] 
+};
+ console.log(mochila.color);//azul
+ mochila.color = "rojo";
+ console.log(mochila.color);//rojo
+ console.log(mochila.contenido);
+ mochila.contenido.push("lapiz");//se agrega al arreglo
+ console.log(mochila.contenido);
+ mochila.contenido = ["pelota", "guantes"];//cambia el array completo
+ console.log(mochila.contenido);
+ console.log("  ");
+
+
+ //Agregar propiedades a un objeto
+
+ let curso = {
+    "titulo"    : "Javascript",
+    "idioma"    : "español",
+    "duracion"  : 30
+ }
+
+ curso.vistas = 34500;
+ curso["inscritos"] = 50
+ console.log(curso.vistas);
+ console.log(curso.inscritos);
+ console.log(curso);
+console.log("   ")
+
+//Eliminar propiedad, se utiliza el metodo delete
+
+let cursoDos = {
+    "titulo"    : "Javascript",
+    "idioma"    : "español",
+    "duracion"  : 30,
+    "inscritos" : 100
+ }
+
+delete curso.duracion;// se utiliza el metodo delete
+console.log(cursoDos);
+console.log("  ")
+
+//Objetos para busqueda, se puede cambiar un switch por un objeto para hace un codigo más conciso
+
+function buscarElementoQuimico(simbolo){//se agregra parametro simbolo
+    let simbolosQuimicos = {
+        "Al"    : "Aluminio",
+        "S"     : "Azufre",
+        "Cl"    : "Cloro",
+        "He"    : "Helio",
+        "B"     : "Boro",
+        "Li"    : "Litio"
+    }
+    return simbolosQuimicos[simbolo];//retorna el valor de la propiedad que venga como argumento de simpbolo param.
+}
+console.log(buscarElementoQuimico("S"));// Azufre, de esta manera se accede al valor del objeto.
+console.log(" ");
+//quede en el minuto 5:24:00
+
+//Verificar propiedades de un objeto, esto con el metodo hasOwnProperty();
+
+let libro = {
+    "color": "verde",
+    "categoria": 3,
+    "precio": 4.56
+};
+console.log(libro.hasOwnProperty("color"));//true, 
+console.log(libro.hasOwnProperty("origen"));//false
+
+function verificarPropiedad(obj, propiedad){
+    if(obj.hasOwnProperty(propiedad)){
+        return "Propiedad: " + obj[propiedad];
+    } else {
+        return "El objeto no tiene la propiedad";
+    }
+}
+console.log(verificarPropiedad(libro,"categoria"));// 3, la funcion reciebe como arg un obj y una cadena y devuelve el valor de la prop
+console.log("  ")
+
+
+//Objetos Complejos, los más usados en el desarrollo web, parecido a un Json 
+
+let ordenesDePizzas = [
+    {
+      "tipo": "margarita",
+      "tamaño": "individual",
+      "precio": 5.67,
+      "toppings": [
+          "extra queso",
+          "champiñones",
+          "piña"
+      ],
+      "paraLlevar": true
+    },
+    {
+      "tipo": "cuatro quesos",
+      "tamaño": "familiar",
+      "precio": 18.34,
+      "toppings": [
+          "extra queso",
+          "pimentón"
+      ],
+      "paraLlevar": false
+    },
+    {
+     "tipo": "Hawaiana",
+      "tamaño": "familiar",
+      "precio": 18.34,
+      "toppings": [
+          "extra queso",
+          "pimentón"
+      ],
+      "paraLlevar": false
+    }
+  ];
+
+
+//como es un array de obj, es necesario si o si usar corchetes al comienzo
+console.log(ordenesDePizzas[1].toppings);//De esta manera se accede a un array de objetos *****, con notacionde corchete y punto
+console.log(ordenesDePizzas[1]["precio"]);//De esta manera se accede a un array de objetos *****, con notacionde corchete
+console.log("  ");
+
+
+//Objetos anidados, objetos dentro de otros objetos, para recorrer el objeto se puede usar la notacion de puntos
+
+let miReceta = {
+    "descripcion": "mi postre favorito",
+    "costo": 15.6,
+    "ingredientes": {
+      "masa": {
+        "harina": "100 grs",
+        "sal": "1 cucharadita",
+        "agua": "1 taza"
+      },
+      "cobertura": {
+        "azucar": "120 grs",
+        "chocolate": "4 cucharadas",
+        "mantequilla": "200 grs"
+      }
+    }
+  };
+
+  console.log(miReceta.ingredientes.masa.sal);//ingresando con notacion de puntos
+  console.log(miReceta["ingredientes"]["masa"]["sal"]);//ingresando con notacions de corchetes
+  console.log(miReceta["ingredientes"].cobertura["mantequilla"]);//también se puede hacer una combinacion de ambas
+  console.log("  ");
+
+  // Arreglos anidados
+
+  var misPlantas = [
+    {
+      tipo: "flores",
+      lista: [
+        "rosas",
+        "tulipanes",
+        "dientes de león"
+      ]
+    },
+    {
+      tipo: "árboles",
+      lista: [
+        "abeto",
+        "pino",
+        "abedul"
+      ]
+    }
+  ];
+
+  let miFlor = misPlantas[0].lista[0];
+  let segundoArbol = misPlantas[1].lista[1];
+  console.log(miFlor);
+  console.log(segundoArbol);
+
+  //Coleccion de Discos min 5:58:00
+
+  let coleccionDeDiscos = {
+    7853: {
+      tituloDelAlbum: "Bee Gees Greatest",
+      artista: "Bee Gees",
+      canciones: ["Stayin' Alive"]
+    },
+    5439: {
+      tituloDelAlbum: "ABBA Gold"
+    }
+  };
+
+  function ActualizarDisco(discos, id, propiedad, valor){
+    if(valor === ""){
+        delete discos[id][propiedad];
+    } else if(propiedad === "canciones"){
+        discos[id][propiedad] = discos[id][propiedad] || [];//el operador or || hace que se elija una de las dos opciones en caso de que uno sea undefined, seleccionara la otra opcion
+        discos[id][propiedad].push(valor);//agrega el valor a la propiedad
+    } else{
+        discos[id][propiedad] = valor;
+    }
+  }
+
+  console.log(coleccionDeDiscos[5439].artista);
+  ActualizarDisco(coleccionDeDiscos, 5439, "artista", "Abba")
+  console.log(coleccionDeDiscos[5439].artista);
+  console.log("  ");
+
+  // Ciclos o Bucle o Loop
+
+  //    While (Mientras, sea verdadera), se utiliza cuando no se tiene un numero especifico de iteracion (es una repeticion de bloque de codigo)
+
+  let i = 0;
+
+  while(i <= 3){//pinta 4 veces porque empieza de 0,1,2,3 recien termina
+    console.log("Hola mundo")
+    i++//aumenta en 1 el i
+  }
+
+  let miArreglo4 = [];
+  i = 0;//para que vaya contando el while, se debe inicializar el valor en 0
+
+  while(i < 10){//los operados indicaran cuantas veces se va a iterar el codigo
+    miArreglo4.push(i+1);//si se agrega al i un 1, este comenzara de 1 y terminara en 10, si no se agrega sera de 0-9
+    i++;//se aumenta en 1 el valor de i
+  }
+
+  console.log(miArreglo4);
+
+  let numeros = [2,3,4,5,6,8,9,34];
+
+  while(numeros.length > 4){//mientras el tamaño de numeros sea menor a 4, entonces
+    numeros.pop();//eliminara los ultimos valores mientras se cumpla la condicion
+  }
+
+  console.log(numeros);//[2,3,4,5], deja solo 4 valores o en 4 el tamaño del array
+  console.log(" ");
+
+
+// Ciclo FOR, se usa cuando sabemos cuantas iteraciones son necesarias, este actualzia la bandera, la ventaja es que se pueden declarar las 
+
+let miArreglo5 = [];
+
+for(let i = 0; i < 10; i++){//dentro de la condicion se debe declarar una variable contable (i), en un ciclo solo puede ser "var" o "let"
+// inicio var|condicion|actualizacion var
+    miArreglo5.push(i);
+}
+
+console.log(miArreglo5);//[0-9]
+
+miArreglo5 = [];
+for(let i = 0; i < 10; i = i +2){//con el aumento de +2 a i se logra agregar +2 en cada iteracion 2,4,6. tambien puede ser i += 2
+    // inicio var|condicion|actualizacion var
+    miArreglo5.push(i);
+}
+
+console.log(miArreglo5);//[2-4-6-8]
+console.log(" ");
+
+//Ciclos For, numeros impares
+
+let miArreglo6 = [];
+
+for(let i = 1; i < 20; i +=2 ){//para obtener impares, se debe iniciar i = 1 y actualizar con i += 2
+    miArreglo6.push(i);
+}
+
+console.log(miArreglo6);//1,3,5,7,9,11..
+console.log("  ");
+
+
+// Ciclo For, Contar hacia atras *************************
+
+for(let i = 15; i >= 10; i -= 1){//el valor i es mayor que la condicion, al actualizar i va ir disminuyendo en 1 15-14-13-12
+    console.log(i);           // tambien se puede usar i -= 1, o para que sea de 2 en 2, i -= 2,15-13-11
+}
+
+let miArreglo7 = [];
+
+for(let i = 10; i > 0; i -= 2){//hasta que llegue a 0 se va a iterar el scope
+    miArreglo7.push(i);//va a ir agregando i al array, dismunuyendo en cada iteracion en 2, 10-8-6-4-2
+}
+
+console.log(miArreglo7);//[10,8,6,4,2]
+console.log(" ");
+
+//Iterar sobre un arreglo con el ciclo For, tambien pueden ser arr anidados, objetos, etc.Se recomienda clg para ver como funk el loop
+
+let miArreglo8 = [4, 6, 8, 2];
+
+let total = 0;
+
+for(let i = 0; i < miArreglo8.length; i++){// el i++ se aplica despues que se itere el codigo
+    console.log("iteracion " + i);//se ve el numero de iteracion
+    console.log(miArreglo8[i]);//se ve el elemento que se va a agregar de acuerdo a su indice
+    total += miArreglo8[i];//i entra como 0, y valdria 4 en el arreglo, esto va ir sumando cada elemento del arr a la var total
+}
+console.log(total);//20
+
+let lenguajes = ["Javascript", "Python", "Java", "C++"];
+let leng = [];
+for(let i = 0; i < lenguajes.length;i++){
+    console.log(lenguajes[i].toUpperCase())//con esto solo se cambia cada valor a mayusc, no hace cambios en el arr lenguajes
+    leng.push(lenguajes[i].toUpperCase());//con este codigo, agrego el valor mayusc al arr leng
+    //console.log(lenguajes);
+}
+
+console.log(leng);
+console.log(" ");
+
+//Ciclo for dentro de una funcion
+
+function contarNumerosPares(arreglo){
+    let total = 0;//va a contar los numero pares que se vayan encontrando
+    for(let i = 0; i < arreglo.length; i++){//para recorrer el arreglo completo se usa .lenght y el operador estrico "<"
+        if(arreglo[i] % 2 == 0){//si el valor del indice i del arreglo tiene resto 0 de la division por 2, entonces 
+            total++;//suma 1 a la variable total
+        }
+    }
+    return "Se encontraron: " + total+ " numeros pares.";
+}
+
+console.log(contarNumerosPares([5,3,1,11]))// total = 0;
+console.log(contarNumerosPares([5,2,1,2]))// total = 2;
+console.log(" ");
+
+
+//Ciclos For Anidados, for dentro de otro for, sirve para iterar arrays que estan dentro de otro array en este caso se usa 2 for
+
+let miArreglo9 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+// Mi forma :)
+for(let i = 0; i < miArreglo9.length; i++){
+    for(let a = 0; a < miArreglo9[i].length; a ++){
+       // console.log(miArreglo9[i][a]);// pinta arreglo por arreglo, no recorre el interior de los arreglos elementos
+    }
+}
+
+//como lo explican
+
+for(let i = 0; i < miArreglo9.length; i ++){
+    console.log("> Nueva iteracion")
+    let arregloAnidado = miArreglo9[i];//arreglo
+    console.log("Arreglo: " + arregloAnidado);
+    for(let a = 0; a < arregloAnidado.length; a++ ){
+        console.log(">>> Ciclo anidado");
+        console.log("Elemento: " + arregloAnidado[a]);
+        console.log(arregloAnidado[a]);//valor del elemento arr que esta dentro del arr mi arreglo9
+    }
+}
+
+console.log(" ");
+
+//Ciclo Do While, "hacer" tal cosa "mientras", recordar que al ciclo while se le deba añadir el i++ al final del scope
+            /* Es recomendable usar cuando un usuario ingresa un valor y se necesite validar ese valor, cuando el valor sea true
+            para la condicion, recien podrá continuar el programa si no, se le volvera a pedir el valor al user.
+            */
+
+let xs;
+xs = 16;
+
+do {                //ejecuta el codigo al menos 1 vez si o si
+    console.log(xs)
+    xs++;           //aumenta sx en 1, 5+1, 6+1, 7+1
+}while(xs < 10);    // mientras xs sea menor a 10
+
+console.log(xs); //17, porque se alcanzo a ejecutar el codigo do
+
+while(xs < 10){ //a diferencia, de do while, aqui la condicion es false por lo tanto nunca entra al scope de while
+    console.log(xs);
+    xs++
+}
+
+console.log(" ");
+
+
+// Ejercicio Busqueda de perfil, excelente explicacion
+
+var contactos = [
+    {
+      "nombre": "Nora",
+      "apellido": "Nav",
+      "numero": "0543236543",
+      "gustos": ["Pizza", "Programación"]
+    },
+    {
+      "nombre": "Harry",
+      "apellido": "Potter",
+      "numero": "0994372684",
+      "gustos": ["Hogwarts", "Magia"]
+    },
+    {
+      "nombre": "Sherlock",
+      "apellido": "Holmes",
+      "numero": "0487345643",
+      "gustos": ["Casos interesantes", "Violín"]
+    }
+  ];
+
+
+  function buscarPerfil(nombre, propiedad){     //2 parametros, que recibe el nombre del contacto y la propiedad a buscar
+    for(let i = 0; i < contactos.length; i ++){//recorre el array
+        if(contactos[i].nombre === nombre){     //condicional que compara la propiedad nombre con el argumento nombre enviado a la fun
+            return contactos[i][propiedad] || "la propiedad no existe.";//se usa OR ||, si es undefined o no se encuentra el nombre,
+                                                                            //devolvera la cadena de texto.
+        }
+    }
+    return "El contacto no esta en la lista de contacto";//si no encuentra el nombre se saltara el if y retornara esta cadena
+  }
+
+  console.log(buscarPerfil("Alfredo", "gustos"));//no se encuentra el contacto, como no entra al if 953, pasa al return de la fun
+console.log(buscarPerfil("Sherlock","numero"));//0487345643, existe el contacto y la propiedad
+console.log(buscarPerfil("Sherlock","seguidores"));//la propiedad no existe, existe el contacto, pero no la propiedad
+console.log(" ");
+
+
+// Numeros aleatorios, con Math.random()
+
+function generarNumeroAleatorio(){
+    //return Math.floor(Math.random() * 10 + 1); //entre 0 y 0.99, no genera el entero 1
+    return Math.random();// generea numeros decimales entre 0 y 0.99
+}
+console.log(generarNumeroAleatorio());
+console.log(" ");
+
+
+//Numeros aleatorios Enteros, con Math.random()
+
+let numeroAleatorioEntre0y19 = Math.floor(Math.random()*20);// con M.floor(), se recupera el entero anterior sin decimales, 
+                                                            //primero se resuelve M.random x 20 ej:0.99 * 20 == 19.8
+                                                            //con Math.floor(19.8) se transforma en 19
+console.log(numeroAleatorioEntre0y19);
+
+function generarEnteroAleatorio(limiteSuperior){
+    //generara un entero aleatorio entre 0 y el limite
+    //superior (sin incluirlo)
+    return Math.floor(Math.random() * limiteSuperior);
+}
+//console.log(generarEnteroAleatorio(5));
+for(let i = 0; i < 10; i++){//pintara 10 numeros aleatorios
+    console.log(generarEnteroAleatorio(i));// se llama a la funcion
+}
