@@ -990,3 +990,133 @@ function generarEnteroAleatorio(limiteSuperior){
 for(let i = 0; i < 10; i++){//pintara 10 numeros aleatorios
     console.log(generarEnteroAleatorio(i));// se llama a la funcion
 }
+console.log("  ")
+
+//Numeros aleatorios Enteros en un rango, con Math.random()
+
+function rangoAleatorio(limiteInferior, limiteSuperior){
+    return Math.floor(Math.random() * (limiteSuperior - limiteInferior + 1)) + limiteInferior;//esta funcion incluye el inferior y superior
+}
+console.log(rangoAleatorio(1,6));
+console.log("");
+
+
+//Funcion parseInt(), convierte una cadena de caracteres string en un int
+
+let z = parseInt("5");
+let y = parseInt("7");
+
+console.log(z + y);//12, si no se utiliza el parseInt sumaría 57, porque une las cadenas
+
+console.log(parseInt("5"));
+console.log(parseInt("-5"));
+console.log(parseInt("6.7"));// en este caso, solo pinta el 6, elimina el decimal
+console.log(parseInt("Alfredo"));//pinta un valor NaN (Not a Number), no es un numero
+console.log(" ");
+
+//Funcion parseInt Con base
+
+console.log(parseInt("110111", 2))//55, numero binario convertido a entero, puede ser declarado sin comas y tiene el mismo result
+console.log(parseInt("3E0A",16))//15882, numero exadecimal convertido a entero, debe ser indicado con ""
+console.log("");
+
+
+//Operador Condicional (Ternario) condicion?verdadero:falso ***************
+
+let ab = 5;
+let cd = 9;
+
+function retornarMinimo(x, y){
+    console.log(x > y ? x : y);
+    return x < y ? x : y;
+}
+console.log(retornarMinimo(2,9))//9
+console.log(retornarMinimo(9,2))//2
+console.log(ab > cd ? ab + 2: cd *3);//27
+console.log(" ");
+
+
+//Multiples operadores Condicionales
+
+function compararNumeros(a, b){
+    if(a == b){
+        return "a y b son iguales"
+    } else if(a > b){
+        return "a es mayor que b"
+    }else{
+        return "a es menor que b"
+    }
+}
+
+function compararNumerosConTernario(a, b){
+    return a == b ? "a y b son iguales"
+        //condicion     true
+            : a > b ? "a es mayor que b"
+        //condicion     else if
+            :"b es mayor que a";
+}       //              else
+
+console.log(compararNumerosConTernario(11, 27));
+console.log("");
+
+
+// VAR vs LET
+
+let campista = "james";// let solo puede ser declarado una sola vez con un nombre que no se puede repetir, pero si se puede llamar y actualizar su valor
+var campista2 = "david";//var se puede repetir e incluso en la declaracion actualizar su valor
+console.log(campista)
+console.log("  ");
+
+
+//Ambito de VAR vs LET
+
+//Var
+
+var miVariableGlobal = 4;
+
+function miFuncion(){
+    console.log(miVariableGlobal);//4
+    var miVariableLocal = 8;
+    console.log(miVariableLocal);//8
+}
+
+miFuncion();
+console.log(miVariableGlobal);//4
+//console.log(miVariableLocal);//is not defined porque es local
+console.log(" ");
+
+//Let
+
+for(var f = 0; f < 3; f++){
+    console.log(f);
+}
+
+console.log("Variable: " + f);//al estar el for como bucle global, la var f pasa a ser global, no local del ciclo, por ello se puede llamar
+
+for(let xsz = 0; xsz < 3; xsz++){
+    //console.log(xs);
+}
+
+//console.log("Variable: " + xsz);//is not defined, al usar let en un ciclo global, solo podrá ser llamado dentro de la funcion y no
+                                //podrá ser llamado de manera global
+console.log("")
+
+var mostrarColor = true;
+
+if(mostrarColor){
+    var color = "verde";//si es var, se puede llamar como global, si es let no lo permitira y solo se usará en la condicional
+    console.log("Mi color favorito es: " + color);
+}
+console.log(color);//is not defined, no puede acceder a la variable local color, porque es variable let, es lo mismo en la funcion
+console.log("");
+
+//Variable Const o constante, solo pueden ser usadas para acceder, no pueden ser modificadas una vez tenga valor
+
+const miConstante = 35;
+console.log(miConstante);
+
+
+
+
+
+
