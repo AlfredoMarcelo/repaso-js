@@ -1237,7 +1237,7 @@ console.log(sumarSpread(...numeroSpread));//6,con .spread(...xxxx), descompone e
 console.log("");
 //La diferencia es que el Rest(...args) va en el parametro de la funcion, en cambio Spread va cuando se llama a  la funcion 
 
-
+//              DESTRUCTURING OBJETOS
 
 //Sintaxis de destructuracion, esto nos permite asginar propiedades y valores de un objeto a variables
 
@@ -1251,6 +1251,226 @@ const usuarioDestructuring = {
 //console.log(edadD);
 
 const {nombreUser, edad} = usuarioDestructuring;//da error si hay una variable global con el nombre de un atributo
-    // atributos            objeto
+//  atributos||propiedades = objeto
 
-    //quede en el min 8:16:00
+let coordenadas = {
+    xd: 4,
+    yd: 6,
+    zd: 12
+};
+
+const {xd,yd,zd} = coordenadas;
+console.log(yd + zd);//18, con el destructuring se puede declarar las propiedades que fueron guardadas como variables
+console.log("");
+
+
+//Destructuracion de objetos anidados, sirve para json************************************
+
+const usuarioDestructurin2 = {
+    johnDoe: { 
+      edadD: 27,
+      correo: "johnDoe@freecodecamp.com"
+    }
+  };
+
+const {johnDoe: {edadD, correo}} = usuarioDestructurin2;//sirve para guardar propiedades de un objeto dentro de otro
+//  propiedad:  objeto hijo      = objeto padre
+console.log(edadD);//27
+const {johnDoe: {edadD:edadUser, correo: correoUser}} = usuarioDestructurin2;//se renombra las propiedades
+//  propiedad:objHijo{prop:nuevoNombre}
+console.log(edadUser);//27,ahora se debe declarar el nuevo nombre
+console.log("");
+
+//TERCER EJEMPLO
+const PRONOSTICO_LOCAL = {
+    "ayer": { 
+      minima: 61, 
+      maxima: 75 
+    },
+    "hoy": { 
+      minima: 64, 
+      maxima: 77 
+    },
+    "mañana": {
+      minima: 68,
+      maxima: 80 
+    }
+  };
+
+const {hoy: {minima:minimaHoy}} = PRONOSTICO_LOCAL;//una vez cambiada el valor de la key, no se podrá declarar nuevamente
+const {ayer: {minima:minimaAyer, maxima: maximaAyer}} = PRONOSTICO_LOCAL;
+console.log(minimaHoy);//solo se podrá usar en nombre nuevo(minimaHoy);
+console.log(minimaAyer);//61 se puede cambiar el nombre de cualquier propiedad o atributo
+console.log("");
+
+//                          DESTRUCTURING DE ARREGLOS
+
+//Destructuring de arreglos
+
+let aA;
+let bB;
+let cC;
+[aA, bB, cC] = [1, 2, 3];//de esta manera se le asigna el valor de un arreglo a una variable ya declarada
+[aA, bB, cC] = [1, 2, 3, 4, 5]//si hay más valores, solo se considerarán los 3 primeros
+
+let aAa;
+let bBb;
+let cCc;
+[aAa, bBb,,, cCc] = [1, 2, 3, 4, 5]//se puede agregar comas para hacer saltos y tomar otro valor para la variable
+
+console.log(cCc);//5, se salta 2 posiciones y en vez de ser 3 será 5
+
+let aAaA = 8;
+let bBbB = 6;
+
+[bBbB, aAaA] = [aAaA, bBbB];//se intercambian el valor con las variables. 
+console.log("aAaA: " + aAaA);//6
+console.log("bBbB: " + bBbB);//8
+console.log("");
+
+// Sintaxis de Desestructuracion (unir) con el Operador rest
+
+let aA1;
+let bB1;
+let arr1;
+
+[aA1, bB1, ...arr1] = [1, 2, 3, 4, 5, 6, 7];// el operador rest toma todos los valores sobrantes y los asigna a arr1
+console.log(aA1);//1
+console.log(bB1);//2
+console.log(arr1);//[3, 4, 5, 6, 7], se agrupan todos los demas valores en un array, recordar que rest retorna un arreglo
+
+
+const arregloInicial1 = [1, 2, 3, 4, 5, 6, 7, 8];
+
+function removerTresPrimerosElementos(arreglo){//recibe un arreglo como parametro
+    const [ , , , ...nuevoArreglo12] = arreglo;//con las ,,, se salta los 3 primeros elementos
+    return nuevoArreglo12;                       //retorna el nuevo arreglo
+}
+
+const arregloFinal = removerTresPrimerosElementos(arregloInicial1);
+console.log(arregloFinal);//[3, 4, 5, 6, 7], array sin los 3 primeros elementos del array original
+console.log("");
+
+
+//Sintaxis de DESestructuracion: Pasar Objeto como Argumento
+
+var nuevoPerfilCliente = {
+    nombre: "Jane Doe",
+    edad: 24,
+    nacionalidad: "Española",
+    ubicacion: "España"
+  };
+//1er manera
+const actualizarPerfil = (informacionPerfil) => {//se recibe objeto 
+    const {nombre:nombrePerfil2//se renombra la propiedad en la nueva variable
+            , edad: edadPerfil2
+            , nacionalidad: nacionalidadPerfil2
+            , ubicacion: ubicacionPerfil2 
+        } = informacionPerfil;//objeto que entra como parametro
+    console.log(nombrePerfil2, edadPerfil2, nacionalidadPerfil2, ubicacionPerfil2);//pinta los valores
+}
+
+actualizarPerfil(nuevoPerfilCliente);
+
+//2da manera
+const actualizarPerfilEnVariables = ({nombre, edad, nacionalidad}) => {//se pasa las propiedades
+                                    //dentro de {} y luego se podran usar individualmente
+                                    //la funcion se debe declarar con un argumento valor objetos
+                                    //tambien se pueden tener de parametros las propiedades que se necesiten y no todas
+    console.log(nombre, edad, nacionalidad);
+};
+
+actualizarPerfilEnVariables(nuevoPerfilCliente);//Jane Doe 24 Española
+
+const estadisticas = {
+    max: 56.78,
+    desviacionEstandar: 4.34,
+    mediana: 34.54,
+    moda: 23.87,
+    min: -0.75,
+    promedio: 35.85
+  };
+
+const mitad = (e) => (e.max + e.min) / 2.0;//manera normal de extraer valores de propiedades de objetos
+const mitadDestructurin = ({max, min}) => (max + min) / 2.0;//destructurando el objeto segun sus propiedades, solo se estan tomando en cuenta dos propiedades
+console.log(mitadDestructurin(estadisticas))//28.015
+console.log("");
+
+
+//                           Plantillas Literales o Plantillas de cadenas
+
+        //se usa el acento invertido (backtick) ` `en lugar de comillas
+        //pueden contener comillas simples o dobles
+        //las lineas se preservan como se esciben en el codigo
+        //Para reemplazar una variable se escribe ${variable}
+        //dentro de ${} tambien puedes escribir expresiones, como multiplicar, restar sumar etc.
+
+let texto = 5;
+console.log(`EL valor de texto es ${texto}`);
+
+let nombreEj = "Nora";
+let edadEj = 6;
+
+console.log(`Mi nombre es ${nombreEj} y tengo ${2*3} años.`);//se pueden hacer expresiones dentro de ${}
+console.log(`Mi nombre es ${nombreEj} y tengo ${edadEj} años.`);//se invocan variables
+
+let arrEj = [1, 2, 3, 4];
+console.log(`El arreglo es ${arrEj}`);//el arreglo es 1,2,3,4. Pinta solo los valores y las comas
+console.log(`El arreglo es ${JSON.stringify(arrEj)}`)//el arreglo es [1,2,3,4].stringify convierte el array en un texto plano
+//tener en cuenta JSON y sus demas metodos como stringify y demas.
+
+let personEj = {//objeto, con dos propiedades  
+    nombre: "Gino Cass",
+    edad: 10
+};
+
+const SALUDO = `¡Hola! Mi nombre es ${personEj.nombre} y tengo ${personEj.edad} años.`;//se llama a las propiedades del obj
+console.log(SALUDO);//Hola mi nombre es gino cass y tengo 10 años. Lo usaria para saludar cuando se obtenga un jSon
+
+
+//Funcion para crear un objeto desde una funcion, crear objetos de forma concisa
+
+//manera normal
+const crearUser = (nombre, edad, idioma) => {
+    return {
+        nombre: nombre,//tener en cuenta que js, siempre cambia los atributos a texto
+        edad: edad,// al tener el mismo nombre,los parametros pasan a estar al lado del valor de la propiedad
+        idioma: idioma
+    };
+};
+
+console.log(crearUser("Alfredo", 21, "Español"));//{nombre: 'Alfredo', edad: 21, idioma: 'Español'}, se crea un obj
+
+
+//Manera pro concisa
+
+const crearUserConciso =(nombre, edad,idioma) => ({nombre, edad, idioma});//al agregar las llaves, js entiende que queremos retornar un objeto
+                                        //estos serán los nombres de las propiedades, y los argumentos seran sus valores
+console.log(crearUserConciso("Coni", 25, "Bombastic"));//{ nombre: 'Coni', edad: 25, idioma: 'Bombastic' }                                       
+console.log("");
+
+// METODOS JS, funciones dentro de los objetos
+
+//este metodo es de esmac5
+const person = {
+    nombre: "Isabel",
+    presentarse: function(){// la funcino pasa a ser metodo cuando se declara dentro de un objeto
+        return `Hola, mi nombre es ${this.nombre}`;//this(este objeto), se refiere al objeto con el q estamos trabajando
+    }
+}
+//Una funcion dentro de un Objeto, pasa a llamarse METODO. Y para hacer referencia a una propiedad del mismo 
+    // objeto dentro de la funcion o metodo, se debe usar el metodo THIS.propiedad
+console.log(person.presentarse());//como presentarse es una propiedad funcion (metodo), se debe usar ().
+
+//Misma funcion pero con esmac6, se debe usar esta forma  *************************************
+
+const personEs6 = {
+    nombre: "Isabel",
+    presentarse(){// para declarar el metodo solo basta con quitar los dos puntos y agregar ()
+        return `Hola, mi nombre es ${this.nombre}`;//this(este objeto), se refiere al objeto con el q estamos trabajando
+    }
+}
+
+console.log(personEs6.presentarse());//
+
+//  Definir una clase
