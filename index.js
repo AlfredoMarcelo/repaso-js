@@ -1153,13 +1153,59 @@ Object.freeze(colores);
 colores.amarillo = "#4554";//como se uso freeze, bloquea todo tipo de edicion y no se agrega el amarillo
 delete colores.verde;//freeze tambien bloque el metodo delete
 console.log(colores);//{"verde": "#3333","azul": "#454455"}, object is not extensible
+console.log("");
 
 
+//Funciones flecha, son utiles cuando se necesita pasar una funcion como argumento de una funcion
 
-//Funciones flecha
+const fecha = function(){//esta es una funcion anonima, porque no se le define el nombre
+    return new Date();
+}
+
+//Cambio de anonima a flecha
+
+const fechaFlecha = () => new Date();
+
+console.log(fecha());//anonima
+console.log(fechaFlecha());//flecha
+console.log("");
 
 
+//Funciones flecha con parametros
 
+const sumarTres = function(x){//funcion anonima con parametro 
+    return x + 3;
+}
+console.log(sumarTres(10));//13
 
+const sumarTresFlecha = (x) => x + 3;//funcion flecha con Un parametro
+console.log(sumarTresFlecha(11));//14
 
+const concatenarArreglos = function(arr1, arr2){//Funcion anonima con 2 parametros
+    return arr1.concat(arr2);//concatena o une al final el valor ingresado en concat(xxx).
+}
+console.log(concatenarArreglos([1, 2], [3, 4, 5]));//[1, 2, 3, 4, 5], une los dos arreglos en 1
 
+const concatenarArreglosFlecha = (arr1, arr2) => arr1.concat(arr2);//funcion flecha con 2 parametros
+console.log(concatenarArreglosFlecha([6, 7], [8, 9, 10]));//[6, 7, 8, 9, 10], une los dos arreglos en 1
+console.log("");
+
+//Funcion flecha con más de una line en scope
+
+const sumarFlecha = (a, b) => {//funcion flecha que contiene un scope, solo cambia el eliminar "function"
+    let num = 6;
+    return a + b + num;//en el scope se debe declarar el return
+};
+console.log(sumarFlecha(4,6));
+console.log("");
+
+//Valores por defecto para Parametros funcion Flecha, se utiliza cuando queramos que el usuario emita un valor por defecto
+
+const incrementar = (num, valor = 1) => num + valor;//si el user no pasa dos argumentos y pasa el primero,
+                                                    //valor valdrá 1, si pasa dos argumentos, entonces tomará
+                                                    //el valor enviado por el user
+console.log(incrementar(5));//6, num = 5 y se suma el valor por defecto porque solo recibio un argumento
+console.log(incrementar(5,6));//11, como se envian 2 argumentos, el valor por defecto no se toma en cuenta
+console.log("");
+
+//Operador Rest
