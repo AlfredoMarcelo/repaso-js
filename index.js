@@ -1208,4 +1208,49 @@ console.log(incrementar(5));//6, num = 5 y se suma el valor por defecto porque s
 console.log(incrementar(5,6));//11, como se envian 2 argumentos, el valor por defecto no se toma en cuenta
 console.log("");
 
-//Operador Rest
+
+
+//Operador Rest, permite pasar x numeros de argumentos a una funcion y que se agrupen como un arreglo
+
+function miFuncionRest(...args){//el parametro puede tener x nombre, lo importante es que antes lleve 3 puntos ...
+    console.log(args);
+}
+miFuncionRest(1);//[1], devuelve un arreglo con el valor de los argumentos
+
+const sumarRest = (...args) => {
+    return args.reduce((a, b) => a + b, 0);//.reduce(), con este metodo suma los elemntos del arr y los retorna
+    //      REDUCE()     a es valor previo, b valor actual y 0 el valor por defecto que igual se sumara
+}
+
+console.log(sumarRest(1,2,3,4,5));//15, sumo todos los argumentos que se envio a la funcion.
+console.log("");
+
+//Operador Spread, hace lo contrario que el operador rest, toma un arreglo y los descompone 
+
+const numeroSpread = [1, 2, 3];
+
+function sumarSpread(x, y, z){
+    return x + y + z;
+}
+console.log(sumarSpread(numeroSpread[0], numeroSpread[1], numeroSpread[2]));//6, sin spread
+console.log(sumarSpread(...numeroSpread));//6,con .spread(...xxxx), descompone el arreglo y los envia individual
+console.log("");
+//La diferencia es que el Rest(...args) va en el parametro de la funcion, en cambio Spread va cuando se llama a  la funcion 
+
+
+
+//Sintaxis de destructuracion, esto nos permite asginar propiedades y valores de un objeto a variables
+
+const usuarioDestructuring = {
+    nombreUser: "Gino Smith",
+    edad: 34
+};
+//const nombreD = usuarioDestructuring.nombre;//a al antigua
+//const edadD = usuarioDestructuring.edad;//a la antigua
+//console.log(nombreD);
+//console.log(edadD);
+
+const {nombreUser, edad} = usuarioDestructuring;//da error si hay una variable global con el nombre de un atributo
+    // atributos            objeto
+
+    //quede en el min 8:16:00
