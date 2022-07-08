@@ -1112,8 +1112,51 @@ console.log("");
 
 //Variable Const o constante, solo pueden ser usadas para acceder, no pueden ser modificadas una vez tenga valor
 
-const miConstante = 35;
+const miConstante = 35;// const inicializado con un valor
 console.log(miConstante);
+//miConstante = 15;// da un error porque el const no puede cambiar de valor, solo leer*************
+
+//const miConstante2;// da error porque una constante siempre debe ser inicializada con un valor**************
+const miConstante2 = 20;
+console.log(miConstante2);//20
+
+//Const en funcion
+
+function calcularAreaCirculo(radio){
+    const PI = 3.14;        //Const se usara más cuando queramos que un valor no cambie durante todo el programa
+    if(radio < 0){          //patron de retorno anticipado, o evaluar un valor antes de ejecutar un codigo
+        return undefined
+    }
+    return PI * (radio ** 2);//dos ** es para elevar con exponente, en este caso **2 es radio al cuadrado 
+}
+console.log(calcularAreaCirculo(2));
+
+//Mutar Arreglo Declarado con Const , no significa que el valor no pueda cambiar, sino que no se puede asignar un valor nuevo
+        // NOTA: Las constantes pueden ser declaradas en mayusculas o minusculaas,**************
+        //pero por convencion para distinguirlas del resto de variables se escribe todo en mayusculas**********
+
+const MI_ARREGLO = [1, 2, 3, 4];
+//MI_ARREGLO = [5, 6, 7, 8];//esto genera un error, Assignment to constant variable, no se puede iniciar nuevamente el valor d un const
+MI_ARREGLO[0] = 35;//********Pero si lo podemos MUTAR, o reasignar los valores individuales  */
+console.log(MI_ARREGLO);
+console.log("");
+
+
+//Crear un objeto INMUTABLE con freeze(), previene la modificacion de atributos y valores y que se agreguen más
+
+let colores = {
+    "verde": "#3333",
+    "azul": "#454455"
+}
+
+Object.freeze(colores);
+colores.amarillo = "#4554";//como se uso freeze, bloquea todo tipo de edicion y no se agrega el amarillo
+delete colores.verde;//freeze tambien bloque el metodo delete
+console.log(colores);//{"verde": "#3333","azul": "#454455"}, object is not extensible
+
+
+
+//Funciones flecha
 
 
 
