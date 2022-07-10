@@ -1473,4 +1473,62 @@ const personEs6 = {
 
 console.log(personEs6.presentarse());//
 
-//  Definir una clase
+//  Definir una clase o declarar, una clase es un plano o modelo que permite reusarlo n veces
+    //estas clases no son tan funcinales como las que se crean en Java o Python, es una manera más
+    //concisa de crear un objeto, pero no tiene la misma funcionalidad que Java o Pyton
+
+class TransbordadorEspacial {//El nombre de la clase debe empezar con UpperCamelCase *****************
+    constructor(planeta){//constructor que se llamará automaticamente cuando se creé una clase
+        this.planeta = planeta;
+    }
+}
+var zeus =  new TransbordadorEspacial("Jupiter");
+console.log(zeus.planeta);
+
+var apolo = new TransbordadorEspacial("Marte");
+console.log(apolo.planeta);
+
+class Mascota {
+    constructor(nombre, edad){
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+}
+
+var chocolo = new Mascota("chocolo","10");// de esta manera se utiliza la clase, se envian los datos como argumentos
+var renata = new Mascota("Renata","8");
+console.log(chocolo);
+console.log(chocolo.nombre);
+console.log(chocolo.edad);
+console.log(renata);
+console.log(renata.nombre);
+console.log(renata.edad);
+
+//      Getters y Setters, los objetos pueden tener funciones y las clases tambien
+
+class Libro {
+    constructor(autor) {
+      this._autor = autor;//con el _ se entiende que la clase es privada
+    }
+  
+    // Getter
+    get autor() {//con el get obtenemos el valor de las propiedades
+        console.log("getter")
+      return this._autor;
+    }
+  
+    // Setter
+    set autor(nuevoAutor) {//con el set podemos actualizar el valor
+        console.log("setter")
+      this._autor = nuevoAutor;
+    }
+  }
+  
+  const libroS = new Libro("anónimo");
+  console.log(libroS.autor);//anonimo
+  
+  libroS.autor = "Gino Smith";
+  console.log(libroS.autor);//cambia mediante el se de anonimo a Gino Smith
+
+
+  //Terminado
