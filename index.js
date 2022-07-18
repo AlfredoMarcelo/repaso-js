@@ -1397,13 +1397,13 @@ console.log(mitadDestructurin(estadisticas))//28.015
 console.log("");
 
 
-//                           Plantillas Literales o Plantillas de cadenas
+//                           Plantillas Literales o Plantillas de cadenas o interpolacion
 
         //se usa el acento invertido (backtick) ` `en lugar de comillas
         //pueden contener comillas simples o dobles
         //las lineas se preservan como se esciben en el codigo
         //Para reemplazar una variable se escribe ${variable}
-        //dentro de ${} tambien puedes escribir expresiones, como multiplicar, restar sumar etc.
+        //dentro de ${} tambien puedes escribir expresiones,(funciones, condiciones) como multiplicar, restar sumar etc.
 
 let texto = 5;
 console.log(`EL valor de texto es ${texto}`);
